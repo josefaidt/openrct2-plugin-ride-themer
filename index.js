@@ -1,10 +1,22 @@
 // Expose the OpenRCT2 to Visual Studio Code's Intellisense
-/// <reference path="support/openrct2.d.ts" />
+/// <reference path=".support/openrct2.d.ts" />
 
-import { displayName as name, author, version, license as licence } from './package.json'
+import {
+  name as id,
+  displayName as name,
+  author,
+  version,
+  license as licence,
+} from './package.json'
 import action from './action'
 
 function main() {
+  if (typeof ui !== 'undefined') {
+    ui.registerMenuItem(name, action)
+  } else {
+    console.log('OpenRCT2 is running in headless mode, UI not registered')
+  }
+
   try {
     park.postMessage({
       type: 'award',
@@ -14,14 +26,12 @@ function main() {
     console.log(error)
   }
 
-  ui.registerMenuItem(name, action)
-
-  // context.registerIntent({
-  //   key: 'ride-themer.open-window',
-  //   title: 'Open Ride Themer',
-  //   shortcut: 'SHIFT+T',
-  //   action,
-  // })
+  context.registerIntent({
+    key: `${id}.open-window`,
+    title: 'Open Ride Themer',
+    shortcut: 'SHIFT+T',
+    action,
+  })
 }
 
 registerPlugin({

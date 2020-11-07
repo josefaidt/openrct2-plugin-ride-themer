@@ -1,4 +1,4 @@
-import { displayName as name, version } from './package.json'
+import { name as id, displayName as name, version } from './package.json'
 
 function button(text, onClick) {
   const y = 0
@@ -23,13 +23,13 @@ export default function action() {
     console.log(error)
   }
   let window
-  window = ui.getWindow(name)
+  window = ui.getWindow(id)
   if (window) {
     window.bringToFront()
   }
 
   window = ui.openWindow({
-    title: name,
+    title: id,
     classification: name,
     width: 200,
     height: 115,

@@ -4,7 +4,7 @@ Theme multiple rides with a single utility
 
 ## Getting Started
 
-1. Download the latest [release](/releases)
+1. Download the [latest release](https://github.com/josefaidt/openrct2-ride-themer/releases/latest)
 2. Copy to OpenRCT2's `plugin` directory
 
 ## Development
