@@ -1,5 +1,5 @@
 // Expose the OpenRCT2 to Visual Studio Code's Intellisense
-/// <reference path="etc/openrct2.d.ts" />
+/// <reference path="support/openrct2.d.ts" />
 import { author, version, license } from './package.json'
 import action from './action'
 
