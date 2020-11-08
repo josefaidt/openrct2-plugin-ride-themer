@@ -12,3 +12,7 @@ Theme multiple rides with a single utility
 1. Download/Clone this repository
 2. Install dependencies `yarn install`
 3. Run the dev server with `yarn dev`
+
+## Incompatability
+
+- `Array.flat()`
