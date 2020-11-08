@@ -20,10 +20,13 @@ export default function action() {
     return window.close()
   }
 
+  // need ride name - from rideType?
+  // need ride station type - stationStyle
+
   window = ui.openWindow({
     title: name,
     classification: id,
-    width: 200,
+    width: 800,
     height: 400,
     widgets: Document(
       Text('Hello, World!'),
@@ -31,7 +34,13 @@ export default function action() {
       Button('close', closeWindow),
       [Button('close', closeWindow), Button('close', closeWindow)],
       Text('Wow this is a multi-tiered\nmutli-level\nupside down'),
-      Button('close', closeWindow)
+      Button('close', closeWindow),
+      Text(
+        context
+          .getAllObjects('ride')
+          .map(ride => ride.name)
+          .join('\n')
+      )
     ),
   })
 }
