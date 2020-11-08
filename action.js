@@ -1,17 +1,5 @@
 import { name as id, displayName as name, version } from './package.json'
-
-function button(text, onClick) {
-  const y = 0
-  return {
-    type: 'button',
-    text,
-    x: 10,
-    y: y,
-    width: 50,
-    height: 20,
-    onClick,
-  }
-}
+import { Document, Button } from './components'
 
 export default function action() {
   try {
@@ -28,15 +16,15 @@ export default function action() {
     window.bringToFront()
   }
 
+  function closeWindow() {
+    return window.close()
+  }
+
   window = ui.openWindow({
-    title: id,
-    classification: name,
+    title: name,
+    classification: id,
     width: 200,
     height: 115,
-    widgets: [
-      button('close', function close() {
-        window.close()
-      }),
-    ],
+    widgets: Document(Button('close', closeWindow)),
   })
 }
