@@ -8,14 +8,18 @@ export default function Document(...widgets) {
 
   return [].concat(
     ...widgets.map((widget, index) => {
+      // X axis adjustments
       if (Array.isArray(widget) && widget.length) {
         const previous = widgets[index - 1]
         for (let i = 0; i < widget.length; i++) {
           const w = widget[i]
+          // set default x and y
           setDefaults(w)
+          // inherit y position from previous y widget
           if (previous?.y && previous?.y !== INITIAL_Y && previous?.height) {
             w.y = previous.y + previous.height + SPACING
           }
+          // adjust for previous x widget
           const prev = widget[i - 1]
           if (prev?.x && prev?.width) {
             w.x = prev.x + prev.width + SPACING
@@ -25,6 +29,7 @@ export default function Document(...widgets) {
         setDefaults(widget)
       }
 
+      // Y axis adjustments
       if (index !== 0) {
         let prev
         if (Array.isArray(widgets[index - 1]) && widgets[index - 1].length) {
