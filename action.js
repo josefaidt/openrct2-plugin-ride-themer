@@ -1,5 +1,5 @@
 import { name as id, displayName as name, version } from './package.json'
-import { Document, Button } from './components'
+import { Document, Button, Text } from './components'
 
 export default function action() {
   try {
@@ -24,10 +24,14 @@ export default function action() {
     title: name,
     classification: id,
     width: 200,
-    height: 115,
-    widgets: Document(Button('close', closeWindow), Button('close', closeWindow), [
+    height: 400,
+    widgets: Document(
+      Text('Hello, World!'),
       Button('close', closeWindow),
       Button('close', closeWindow),
-    ]),
+      [Button('close', closeWindow), Button('close', closeWindow)],
+      Text('Wow this is a multi-tiered\nmutli-level\nupside down'),
+      Button('close', closeWindow)
+    ),
   })
 }
