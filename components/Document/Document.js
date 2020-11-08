@@ -1,11 +1,11 @@
+import { INITIAL_X, INITIAL_Y } from '../constants'
+
 export default function Document(...widgets) {
-  const y = 20
-  const x = 8
   const spacing = 5
 
   function setDefaults(widget) {
-    if (!widget.x) widget.x = x
-    if (!widget.y) widget.y = y
+    if (!widget.x) widget.x = INITIAL_X
+    if (!widget.y) widget.y = INITIAL_Y
   }
 
   return [].concat(

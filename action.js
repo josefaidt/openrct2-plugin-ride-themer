@@ -25,6 +25,10 @@ export default function action() {
     classification: id,
     width: 200,
     height: 115,
-    widgets: Document(Button('close', closeWindow)),
+    widgets: Document(
+      Button('close', closeWindow),
+      Button('close', closeWindow),
+      Button('close', closeWindow)
+    ),
   })
 }

@@ -1,52 +1,37 @@
 import { Button } from '../'
+import { INITIAL_X, INITIAL_Y } from '../constants'
 import Document from './Document'
-
-const width = 50
-const height = 20
 
 describe('Document', () => {
   let button
+  let buttonProps
 
   beforeEach(() => {
     button = () => Button('close', jest.fn())
+    buttonProps = {
+      type: 'button',
+      text: 'close',
+      width: 50,
+      height: 20,
+      x: INITIAL_X,
+      y: INITIAL_Y,
+      onClick: expect.any(Function),
+    }
   })
 
   it('should return one button', () => {
     const MyDocument = Document(button())
-    const mockReturn = [
-      {
-        type: 'button',
-        text: 'close',
-        x: 8,
-        y: 20,
-        width,
-        height,
-        onClick: expect.any(Function),
-      },
-    ]
+    const mockReturn = [buttonProps]
     expect(MyDocument).toMatchObject(mockReturn)
   })
 
   it('should return two vertical buttons', () => {
     const MyDocument = Document(button(), button())
     const mockReturn = [
+      buttonProps,
       {
-        type: 'button',
-        text: 'close',
-        x: 8,
-        y: 20,
-        width,
-        height,
-        onClick: expect.any(Function),
-      },
-      {
-        type: 'button',
-        text: 'close',
-        x: 8,
+        ...buttonProps,
         y: 45,
-        width,
-        height,
-        onClick: expect.any(Function),
       },
     ]
 
@@ -56,23 +41,10 @@ describe('Document', () => {
   it('should return two horizontal buttons', () => {
     const MyDocument = Document([button(), button()])
     const mockReturn = [
+      buttonProps,
       {
-        type: 'button',
-        text: 'close',
-        x: 8,
-        y: 20,
-        width,
-        height,
-        onClick: expect.any(Function),
-      },
-      {
-        type: 'button',
-        text: 'close',
-        x: 63,
-        y: 20,
-        width,
-        height,
-        onClick: expect.any(Function),
+        ...buttonProps,
+        x: 61,
       },
     ]
 
